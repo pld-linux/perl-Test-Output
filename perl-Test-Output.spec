@@ -5,39 +5,35 @@
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	Test
 %define	pnam	Output
-Summary:	Test::Output - Utilities to test STDOUT and STDERR messages.
-#Summary(pl):	
+Summary:	Test::Output - Utilities to test STDOUT and STDERR messages
+Summary(pl.UTF-8):	Test::Output - narzędzia do terowania komunikatów STDOUT i STDERR
 Name:		perl-Test-Output
 Version:	0.10
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Test/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	dcf67296e04a41a9f73f70c10fe5f825
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl(Sub::Exporter)
-BuildRequires:	perl(Test::Tester) >= 0.103
+BuildRequires:	perl-Sub-Exporter
+BuildRequires:	perl-Test-Tester >= 0.103
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Test::Output provides a simple interface for testing output sent to STDOUT
-or STDERR. A number of different utilies are included to try and be as
-flexible as possible to the tester.
+Test::Output provides a simple interface for testing output sent to
+STDOUT or STDERR. A number of different utilies are included to try
+and be as flexible as possible to the tester.
 
-Originally this module was designed not to have external requirements, 
-however, the features provided by Sub::Exporter over what Exporter
-provides is just to great to pass up.
-
-Test::Output ties STDOUT and STDERR using Test::Output::Tie.
-
-
-# %description -l pl
-# TODO
+%description -l pl.UTF-8
+Test::Output udostępnia prosty interfejs do testowania komunikatów
+wysyłanych na STDOUT lub STDERR. Załączonych jest wiele różnych
+narzędzi do wypróbowania, mających być jak najbardziej elastycznymi
+dla testera.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
