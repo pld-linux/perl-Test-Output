@@ -8,19 +8,20 @@
 Summary:	Test::Output - Utilities to test STDOUT and STDERR messages
 Summary(pl.UTF-8):	Test::Output - narzędzia do terowania komunikatów STDOUT i STDERR
 Name:		perl-Test-Output
-Version:	0.10
+Version:	0.16
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Test/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	dcf67296e04a41a9f73f70c10fe5f825
+# Source0-md5:	d7a4bd06f682089bd0b432e6df94cfef
 URL:		http://search.cpan.org/dist/Test-Output/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
+BuildRequires:	perl-File-Temp >= 0.21
 BuildRequires:	perl-Sub-Exporter
-BuildRequires:	perl-Test-Tester >= 0.103
+BuildRequires:	perl-Test-Tester >= 0.107
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
