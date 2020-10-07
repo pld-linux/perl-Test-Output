@@ -7,21 +7,24 @@
 Summary:	Test::Output - Utilities to test STDOUT and STDERR messages
 Summary(pl.UTF-8):	Test::Output - narzędzia do terowania komunikatów STDOUT i STDERR
 Name:		perl-Test-Output
-Version:	1.03
+# main versions have two decimal digits; separate further digits with _ to avoid epoch bumps on future updates
+Version:	1.03_1
+%define	fver	%(echo %{version} | tr -d _)
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/Test/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	903485edb382f5a18a5029978d1febf6
-URL:		http://search.cpan.org/dist/Test-Output/
+Source0:	http://www.cpan.org/modules/by-module/Test/%{pdir}-%{pnam}-%{fver}.tar.gz
+# Source0-md5:	5384ea67483c98290c1e51b3b2aee84d
+URL:		https://metacpan.org/release/Test-Output
+BuildRequires:	perl-ExtUtils-MakeMaker >= 6.64
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 %if %{with tests}
 BuildRequires:	perl-Capture-Tiny >= 0.17
 BuildRequires:	perl-File-Temp >= 0.21
-BuildRequires:	perl-Sub-Exporter
-BuildRequires:	perl-Test-Simple
+BuildRequires:	perl-Test-Simple >= 0.94
 BuildRequires:	perl-Test-Tester >= 0.107
 %endif
 BuildArch:	noarch
@@ -39,7 +42,7 @@ narzędzi do wypróbowania, mających być jak najbardziej elastycznymi
 dla testera.
 
 %prep
-%setup -q -n %{pdir}-%{pnam}-%{version}
+%setup -q -n %{pdir}-%{pnam}-%{fver}
 
 %build
 %{__perl} Makefile.PL \
@@ -59,6 +62,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes README
+%doc Changes
 %{perl_vendorlib}/Test/Output.pm
 %{_mandir}/man3/Test::Output.3pm*
